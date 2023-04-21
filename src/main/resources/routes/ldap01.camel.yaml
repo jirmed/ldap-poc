@@ -1,0 +1,42 @@
+- route:
+    id: route-561c
+    from:
+      uri: timer:1000
+      id: from-c523
+      parameters:
+        repeatCount: 1
+      steps:
+        - setBody:
+            id: setBody-1772
+            expression:
+              simple:
+                expression: '{"filter":"(sn=Amanda)"}'
+                id: simple-12b7
+                resultType: String
+        - unmarshal:
+            id: unmarshal-7216
+            json:
+              id: json-91b8
+              library: Jackson
+        - log:
+            message: ${body[filter]}
+            id: log-eab5
+        - to:
+            uri: spring-ldap:ldapTemplate
+            id: to-60b7
+            parameters:
+              operation: SEARCH
+        - log:
+            message: ${body}
+            id: log-18a8
+            logName: logLdapResponse
+- beans:
+    - name: ldapContextSource
+      properties:
+        url: ldap://localhost:389
+        base: ou=Users,dc=example,dc=org
+        userDn: cn=admin,dc=example,dc=org
+        password: admin
+      type: org.springframework.ldap.core.support.LdapContextSource
+    - name: ldapTemplate
+      type: org.springframework.ldap.core.LdapTemplate
