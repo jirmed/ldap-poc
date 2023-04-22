@@ -30,13 +30,13 @@
             message: ${body}
             id: log-18a8
             logName: logLdapResponse
-- beans:
-    - name: ldapContextSource
-      properties:
-        url: ldap://localhost:389
-        base: ou=Users,dc=example,dc=org
-        userDn: cn=admin,dc=example,dc=org
-        password: admin
-      type: org.springframework.ldap.core.support.LdapContextSource
-    - name: ldapTemplate
-      type: org.springframework.ldap.core.LdapTemplate
+# - beans:
+#     - name: ldapContextSource
+#       properties:
+#         url: ldap://localhost:389
+#         base: ou=Users,dc=example,dc=org
+#         userDn: cn=admin,dc=example,dc=org
+#         password: admin
+#       type: org.springframework.ldap.core.support.LdapContextSource
+#     - name: ldapTemplate
+#       type: org.springframework.ldap.core.LdapTemplate
