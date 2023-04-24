@@ -10,7 +10,7 @@
             id: setBody-1772
             expression:
               simple:
-                expression: '{"filter":"(sn=Amanda)"}'
+                expression: '{"filter":"(sn=Amanda)","dn":"ou=Users,dc=example,dc=org"}' 
                 id: simple-12b7
                 resultType: String
         - unmarshal:
